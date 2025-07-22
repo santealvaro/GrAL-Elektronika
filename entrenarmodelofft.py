@@ -28,7 +28,8 @@ import joblib
 from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
-from imblearn.combine import SMOTEENN  # SMOTE + Tomek Links
+#librerias para probar distintas formas de balance de datos
+from imblearn.combine import SMOTEENN  
 from imblearn.combine import SMOTETomek
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
