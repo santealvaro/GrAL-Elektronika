@@ -13,7 +13,7 @@ def plotdata(n, sfrom, sto):
             sfrom: starting sample
             sto: ending sample
     """
-    fs = 200 #according to the database, this is the sampling time
+    fs = 200 #frecuencia de physionet
     rec_name = 'sz0' + str(n)
     folder = '../szdb/'
 
