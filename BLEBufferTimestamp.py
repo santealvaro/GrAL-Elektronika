@@ -3,15 +3,14 @@ import csv
 import os
 from bleak import BleakClient
 
-# Dirección MAC del dispositivo BLE (reemplaza con la dirección de tu dispositivo)
+# MAC del dispositivo bluetooth
 device_address = "dc:54:75:ca:ef:a1"
 
 # UUID del servicio y la característica
 ECG_SERVICE_UUID = "0000180d-0000-1000-8000-00805f9b34fb"
 ECG_CHARACTERISTIC_UUID = "00002a37-0000-1000-8000-00805f9b34fb"
 
-# Archivo CSV para almacenar los datos
-csv_file = 'ecgDataBLEBuffer20_3enchufao.csv'
+csv_file = 'ecgDataBLEBuffer20_3.csv'
 
 def save_to_csv(timestamp, ecg_value):
     file_exists = os.path.isfile(csv_file)
@@ -35,11 +34,10 @@ async def run():
         async with BleakClient(device_address) as client:
             print(f"Conectado a {device_address}")
 
-            # Obtener los servicios usando la propiedad `services`
             services = client.services
             print(f"Servicios disponibles:")
 
-            # Imprimir detalles de los servicios disponibles
+            # mostrar los sevicios y caracteristicas
             for service in services:
                 print(f"Servicio UUID: {service.uuid}")
                 for characteristic in service.characteristics:
@@ -53,8 +51,8 @@ async def run():
                             print(f"Esperando datos de ECG...")
                             await client.start_notify(characteristic, on_data_received)  # Activa las notificaciones BLE
 
-            # Mantener la conexión abierta
-            await asyncio.sleep(3600)  # 1 hora de lectura (ajustable)
+            # Mantener conexion abierta
+            await asyncio.sleep(3600) 
     except Exception as e:
         print(f"Error: {e}")
 
