@@ -16,7 +16,7 @@ from scipy.signal import find_peaks
 import requests
 
 # Configuración MQTT
-MQTT_BROKER = "172.20.10.2"
+MQTT_BROKER = yourIP
 MQTT_PORT = 1883
 TOPIC = "ECG/data"
 
@@ -144,8 +144,8 @@ class ECGMonitor(QMainWindow):
 
     def send_telegram_alert(self):
         try:
-            BOT_TOKEN = "7713790937:AAGKV4ijMz6U2PIG7vx4JmOkTWu0Hlf95Pg"
-            CHAT_ID = "7509989921"
+            BOT_TOKEN = your_token
+            CHAT_ID = yourID
             message = "‼️ *ERASO EPILEPTIKOA*\n\n %100eko arriskua detektatu da!"
     
             url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
@@ -339,3 +339,4 @@ if __name__ == "__main__":
     window = ECGMonitor()
     window.show()
     sys.exit(app.exec())
+
